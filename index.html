@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olive — Ideas on the side. Madrid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Libre+Caslon+Text:ital@0;1&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive:#5B7A4F;
+    --olive-d:#3F5D3A;
+    --olive-l:#EAF2E8;
+    --pimento:#B23A2E;
+    --brass:#C4903A;
+    --brass-l:#F4EEE1;
+    --cream:#FBFAF6;
+    --ink:#1C1912;
+    --muted:#6B6558;
+    --line:#E4E4DA;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Libre Caslon Text', serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Big Shoulders Display',sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:0.01em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+
+  /* HERO */
+  .hero{
+    padding:52px 24px 40px;
+    border-bottom:5px solid var(--olive);
+  }
+  .wrap{max-width:760px; margin:0 auto;}
+  .brandline{
+    display:flex; align-items:center; gap:10px;
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.16em;
+    color:var(--brass); text-transform:uppercase; margin-bottom:30px;
+  }
+  .brandline .dot{width:8px; height:8px; border-radius:50%; background:var(--pimento);}
+
+  .hero-grid{display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center;}
+  @media (max-width:600px){ .hero-grid{grid-template-columns:1fr;} .hero-mascot{order:-1; margin:0 auto 8px;} }
+
+  h1.display{
+    font-size:clamp(38px, 7.5vw, 62px);
+    line-height:0.96;
+    margin:0 0 16px;
+    color:var(--ink);
+  }
+  h1.display span{color:var(--olive-d);}
+  .sub{
+    font-family:'Libre Caslon Text', serif;
+    font-style:italic;
+    font-size:18px;
+    color:var(--muted);
+    max-width:460px;
+    margin:0 0 8px;
+    line-height:1.5;
+  }
+
+  /* DEPARTURE BOARD — reskinned in olive/cream */
+  .board{
+    background:var(--olive-l);
+    border:1px solid #CFE0CA;
+    border-radius:6px;
+    overflow:hidden;
+    margin-top:28px;
+  }
+  .board-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:10px 18px;
+    background:var(--olive-d);
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px; letter-spacing:0.14em; text-transform:uppercase;
+    color:#DCE8D8;
+  }
+  .board-head .live{color:var(--brass); display:flex; align-items:center; gap:6px;}
+  .board-head .live::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--brass); box-shadow:0 0 6px var(--brass); animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.35;}}
+  .board-row{
+    display:grid;
+    grid-template-columns:90px 1fr 100px;
+    gap:14px;
+    padding:20px 18px;
+    align-items:center;
+  }
+  .board-row .k{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.1em; text-transform:uppercase;}
+  .board-empty{ padding:28px 18px 30px; text-align:left; }
+  .board-empty .flicker{
+    font-family:'Big Shoulders Display',sans-serif; font-weight:800;
+    font-size:20px; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--olive-d);
+    margin-bottom:8px;
+  }
+  .board-empty p{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px; color:var(--muted); line-height:1.7; margin:0 0 16px; max-width:440px;
+  }
+  .ghost-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--olive-d); background:#fff; border:1px solid #CFE0CA;
+    padding:9px 15px; border-radius:2px;
+  }
+
+  /* SECTION: what it is */
+  .section{ padding:60px 24px; }
+  .section .wrap{max-width:640px;}
+  .kicker{
+    font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:0.16em; text-transform:uppercase;
+    color:var(--olive); margin-bottom:14px;
+  }
+  h2.display{font-size:clamp(26px,4.5vw,36px); margin:0 0 22px; line-height:1.02; color:var(--ink);}
+  .lines{display:grid; gap:0; border-top:1px solid var(--line);}
+  .line-item{ display:grid; grid-template-columns:64px 1fr; gap:18px; padding:20px 0; border-bottom:1px solid var(--line); }
+  .line-item .num{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--olive); padding-top:2px;}
+  .line-item h3{margin:0 0 6px; font-family:'Big Shoulders Display',sans-serif; font-weight:600; font-size:18px; text-transform:uppercase; letter-spacing:0.03em; color:var(--ink);}
+  .line-item p{margin:0; font-size:15.5px; line-height:1.55; color:#4A453A;}
+
+  /* PRIVACY BANNER */
+  .privacy{
+    background:var(--olive-d); color:#F1F5EF;
+    padding:22px 24px;
+    text-align:center;
+  }
+  .privacy .wrap{max-width:600px;}
+  .privacy p{
+    font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:0.04em;
+    margin:0; line-height:1.7;
+  }
+  .privacy strong{color:var(--brass);}
+
+  /* SIGNUP */
+  .signup{ background:var(--brass-l); padding:52px 24px 64px; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .signup .wrap{max-width:520px; text-align:left;}
+  .signup-box{ background:var(--cream); border:1px solid var(--line); padding:28px; border-radius:6px; }
+  .signup-box h2.display{font-size:22px; margin-bottom:8px;}
+  .signup-box p.desc{margin:0 0 22px; font-size:15px; color:#4A453A; line-height:1.55;}
+  .field-row{display:flex; gap:10px; flex-wrap:wrap;}
+  input[type="email"]{
+    flex:1; min-width:200px;
+    font-family:'Libre Caslon Text', serif; font-size:15px;
+    padding:13px 14px; border:1px solid #D2CDBB; border-radius:2px;
+    background:#fff; color:var(--ink);
+  }
+  input[type="email"]:focus{outline:2px solid var(--olive); outline-offset:1px;}
+  button.cta{
+    font-family:'IBM Plex Mono',monospace; font-weight:600; font-size:13px; letter-spacing:0.08em; text-transform:uppercase;
+    background:var(--olive); color:#fff; border:none;
+    padding:13px 22px; border-radius:2px; cursor:pointer;
+    transition:background 0.15s ease;
+  }
+  button.cta:hover{background:var(--olive-d);}
+  button.cta:focus-visible{outline:2px solid var(--olive-d); outline-offset:2px;}
+  .form-note{font-family:'IBM Plex Mono',monospace; font-size:11px; color:#9A8F6E; margin-top:12px; line-height:1.6;}
+  .status-msg{font-family:'IBM Plex Mono',monospace; font-size:12.5px; margin-top:12px; min-height:16px;}
+  .status-msg.ok{color:var(--olive-d);}
+  .status-msg.err{color:var(--pimento);}
+
+  /* FOOTER */
+  footer{ background:var(--ink); color:#9B9689; padding:34px 24px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; letter-spacing:0.04em; }
+  footer .wrap{max-width:760px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+  footer strong{color:var(--brass);}
+
+  @media (max-width:520px){
+    .board-row{grid-template-columns:70px 1fr 80px; padding:16px 14px;}
+    .board-head{padding:9px 14px;}
+    .line-item{grid-template-columns:40px 1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){ .board-head .live::before{animation:none;} }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="brandline"><span class="dot"></span> OLIVE · MADRID</div>
+
+    <div class="hero-grid">
+      <div>
+        <h1 class="display">Ideas on<br>the <span>side.</span></h1>
+        <p class="sub">Profesores y expertos suben al escenario de un bar. Charlas cortas, cañas cerca, cero powerpoint aburrido.</p>
+      </div>
+      <svg class="hero-mascot" width="96" height="115" viewBox="0 0 100 120">
+        <line x1="46" y1="80" x2="38" y2="108" stroke="#3F5D3A" stroke-width="3.5" stroke-linecap="round"/>
+        <ellipse cx="35" cy="111" rx="7" ry="4" fill="#3F5D3A"/>
+        <line x1="54" y1="80" x2="62" y2="108" stroke="#3F5D3A" stroke-width="3.5" stroke-linecap="round"/>
+        <ellipse cx="65" cy="111" rx="7" ry="4" fill="#3F5D3A"/>
+        <path d="M40 55 Q22 60 24 78" stroke="#3F5D3A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <circle cx="24" cy="79" r="4.5" fill="#3F5D3A"/>
+        <ellipse cx="50" cy="55" rx="21" ry="29" fill="#5B7A4F"/>
+        <circle cx="50" cy="46" r="6" fill="#B23A2E"/>
+        <path d="M43 22 Q50 10 60 15" stroke="#3F5D3A" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="43" cy="58" r="2.2" fill="#1C1C1C"/>
+        <circle cx="57" cy="58" r="2.2" fill="#1C1C1C"/>
+        <path d="M44 66 Q50 70 56 66" stroke="#1C1C1C" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M60 55 Q76 58 72 76" stroke="#3F5D3A" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <circle cx="72" cy="77" r="4.5" fill="#3F5D3A"/>
+        <g transform="translate(50,82) rotate(-6)">
+          <rect x="-16" y="-11" width="32" height="22" rx="1.5" fill="#F4EEE1" stroke="#3F5D3A" stroke-width="2"/>
+          <line x1="0" y1="-11" x2="0" y2="11" stroke="#3F5D3A" stroke-width="2"/>
+          <line x1="-11" y1="-4" x2="-3" y2="-4" stroke="#C4903A" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="-11" y1="1" x2="-3" y2="1" stroke="#C4903A" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="4" y1="-4" x2="12" y2="-4" stroke="#C4903A" stroke-width="1.6" stroke-linecap="round"/>
+          <line x1="4" y1="1" x2="12" y2="1" stroke="#C4903A" stroke-width="1.6" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="board" id="board">
+      <div class="board-head">
+        <span>Próxima parada / Next stop</span>
+        <span class="live" id="board-live">en vivo</span>
+      </div>
+      <div id="board-body"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="kicker">Cómo funciona</div>
+    <h2 class="display">Tres líneas, una noche.</h2>
+    <div class="lines">
+      <div class="line-item">
+        <div class="num">01</div>
+        <div><h3>Tres charlas</h3><p>15–20 minutos cada una, con preguntas y conversación informal. Sin jerga, con historias.</p></div>
+      </div>
+      <div class="line-item">
+        <div class="num">02</div>
+        <div><h3>Un bar, no un aula</h3><p>Primera parte de la semana, horario temprano, aforo sentado de 60–120 personas.</p></div>
+      </div>
+      <div class="line-item">
+        <div class="num">03</div>
+        <div><h3>Curiosidad, no currículum</h3><p>Público general — profesionales y estudiantes sin conocimiento previo requerido.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="privacy">
+  <div class="wrap">
+    <p><strong>Privacidad sagrada.</strong> No se admiten gafas con cámara, body cams ni dispositivos de grabación — habla y pregunta con libertad, sin estar en cámara.</p>
+  </div>
+</div>
+
+<section class="signup">
+  <div class="wrap">
+    <div class="signup-box">
+      <h2 class="display">Súbete a la lista</h2>
+      <p class="desc">Te avisamos en cuanto salga la próxima fecha — antes de que se publique en ningún otro sitio.</p>
+      <form id="signup-form">
+        <div class="field-row">
+          <input type="email" id="email-input" placeholder="tu@email.com" required aria-label="Email">
+          <button type="submit" class="cta">Avísame</button>
+        </div>
+        <div class="status-msg" id="status-msg" role="status"></div>
+      </form>
+      <div class="form-note">Guardamos solo tu email para avisarte del próximo evento. Sin spam, sin listas compartidas.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong>Olive</strong> — ideas on the side. Madrid</div>
+    <div class="mono" id="year-badge"></div>
+  </div>
+</footer>
+
+<script>
+try {
+  const nextEvent = null;
+  /* Once confirmed in Notion, copy fields here:
+  const nextEvent = {
+    name: "Cómo funcionan realmente los aeropuertos",
+    dateLabel: "MAR 14 OCT",
+    time: "19:30",
+    venue: "Bar TBD, Malasaña",
+    status: "CONFIRMADO",
+    ticketUrl: "https://eventbrite.com/e/xxxxx"
+  };
+  */
+
+  function renderBoard(){
+    const body = document.getElementById('board-body');
+    const live = document.getElementById('board-live');
+    if(!nextEvent){
+      live.textContent = 'sin fecha aún';
+      live.style.color = '#8A8262';
+      body.innerHTML = `
+        <div class="board-empty">
+          <div class="flicker">— · — · — · —</div>
+          <p>NO HAY SALIDAS PROGRAMADAS TODAVÍA.<br>Primera edición en preparación — súbete a la lista abajo y eres el primero en enterarte.</p>
+          <span class="ghost-btn">próxima fecha: por confirmar</span>
+        </div>`;
+      return;
+    }
+    body.innerHTML = `
+      <div class="board-row">
+        <div>
+          <div class="k">Fecha</div>
+          <div class="mono" style="color:#3F5D3A;font-size:15px;margin-top:4px;">${nextEvent.dateLabel}</div>
+        </div>
+        <div>
+          <div class="k">Charla</div>
+          <div class="display" style="font-size:17px;letter-spacing:0.01em;margin-top:4px;color:#1C1912;">${nextEvent.name}</div>
+          <div class="mono" style="font-size:11.5px;color:#6B6558;margin-top:4px;">${nextEvent.venue} · ${nextEvent.time}</div>
+        </div>
+        <div style="text-align:right;">
+          <div class="k">Estado</div>
+          <div class="mono" style="font-size:11px;color:#3F5D3A;margin-top:4px;">${nextEvent.status}</div>
+        </div>
+      </div>
+      <div style="padding:0 18px 18px;">
+        <a href="${nextEvent.ticketUrl}" target="_blank" rel="noopener" style="display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.08em;text-transform:uppercase;background:#5B7A4F;color:#fff;padding:11px 18px;border-radius:2px;text-decoration:none;font-weight:600;">Reservar plaza →</a>
+      </div>`;
+  }
+  renderBoard();
+
+  document.getElementById('year-badge').textContent = new Date().getFullYear() + ' · MAD · oliveseries.com';
+
+  const form = document.getElementById('signup-form');
+  const statusMsg = document.getElementById('status-msg');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const emailInput = document.getElementById('email-input');
+    const email = emailInput.value.trim();
+    if(!email){ return; }
+    statusMsg.textContent = 'Guardando...';
+    statusMsg.className = 'status-msg';
+    try{
+      const key = 'signup:' + email.toLowerCase();
+      const existing = await window.storage.get(key, true).catch(() => null);
+      if(existing){
+        statusMsg.textContent = 'Ya estabas en la lista — ¡nos vemos pronto!';
+        statusMsg.className = 'status-msg ok';
+      } else {
+        await window.storage.set(key, JSON.stringify({ email, ts: new Date().toISOString() }), true);
+        statusMsg.textContent = 'Listo. Te avisamos en cuanto salga la fecha.';
+        statusMsg.className = 'status-msg ok';
+        emailInput.value = '';
+      }
+    } catch(err){
+      statusMsg.textContent = 'No se pudo guardar — inténtalo de nuevo en un momento.';
+      statusMsg.className = 'status-msg err';
+    }
+  });
+} catch(fatalErr) {
+  console.error('Landing page script error:', fatalErr);
+}
+</script>
+
+</body>
+</html>
