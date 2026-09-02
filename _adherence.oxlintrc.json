@@ -1,0 +1,415 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "components/brand/**",
+              "components/icons/**",
+              "components/layout/**",
+              "components/media/**",
+              "components/tiles/**",
+              "components/type/**",
+              "ui_kits/website/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Inter|Nunito))/i]",
+        "message": "Font not provided by the design system. Available: Inter, Nunito."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ColorDot'] > JSXAttribute > JSXIdentifier[name!=/^(?:color|size|label|style|key|ref|className|style|children)$/]",
+        "message": "<ColorDot> doesn't accept that prop. Declared props: color, size, label, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ColorTile'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|color|textColor|height|style|key|ref|className|style|children)$/]",
+        "message": "<ColorTile> doesn't accept that prop. Declared props: children, color, textColor, height, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='FactRowItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|value|key|ref|className|style|children)$/]",
+        "message": "<FactRowItem> doesn't accept that prop. Declared props: label, value."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute > JSXIdentifier[name!=/^(?:name|size|color|strokeWidth|style|key|ref|className|style|children)$/]",
+        "message": "<Icon> doesn't accept that prop. Declared props: name, size, color, strokeWidth, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Icon'] > JSXAttribute[name.name='name'] > Literal[value!=/^(?:arrow-up-right|close)$/]",
+        "message": "<Icon> name must be one of 'arrow-up-right' | 'close'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LinkTile'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|href|color|textColor|src|height|style|key|ref|className|style|children)$/]",
+        "message": "<LinkTile> doesn't accept that prop. Declared props: children, href, color, textColor, src, height, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NavBarItem'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|href|onClick|key|ref|className|style|children)$/]",
+        "message": "<NavBarItem> doesn't accept that prop. Declared props: label, href, onClick."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='NewsletterBar'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|href|style|key|ref|className|style|children)$/]",
+        "message": "<NewsletterBar> doesn't accept that prop. Declared props: children, href, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ObjectTile'] > JSXAttribute > JSXIdentifier[name!=/^(?:src|alt|color|title|meta|textColor|fit|height|style|key|ref|className|style|children)$/]",
+        "message": "<ObjectTile> doesn't accept that prop. Declared props: src, alt, color, title, meta, textColor, fit, height, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='ObjectTile'] > JSXAttribute[name.name='fit'] > Literal[value!=/^(?:contain|cover)$/]",
+        "message": "<ObjectTile> fit must be one of 'contain' | 'cover'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Overlay'] > JSXAttribute > JSXIdentifier[name!=/^(?:open|onClose|paragraphs|background|style|key|ref|className|style|children)$/]",
+        "message": "<Overlay> doesn't accept that prop. Declared props: open, onClose, paragraphs, background, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PageHeader'] > JSXAttribute > JSXIdentifier[name!=/^(?:title|tagline|handle|handleHref|style|key|ref|className|style|children)$/]",
+        "message": "<PageHeader> doesn't accept that prop. Declared props: title, tagline, handle, handleHref, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PhotoLink'] > JSXAttribute > JSXIdentifier[name!=/^(?:src|alt|label|href|size|style|key|ref|className|style|children)$/]",
+        "message": "<PhotoLink> doesn't accept that prop. Declared props: src, alt, label, href, size, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='PhotoTile'] > JSXAttribute > JSXIdentifier[name!=/^(?:src|alt|scrim|height|style|key|ref|className|style|children)$/]",
+        "message": "<PhotoTile> doesn't accept that prop. Declared props: src, alt, scrim, height, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SectionLabel'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|style|key|ref|className|style|children)$/]",
+        "message": "<SectionLabel> doesn't accept that prop. Declared props: children, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='SiteFooter'] > JSXAttribute > JSXIdentifier[name!=/^(?:kicker|title|legal|handle|handleHref|style|key|ref|className|style|children)$/]",
+        "message": "<SiteFooter> doesn't accept that prop. Declared props: kicker, title, legal, handle, handleHref, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Statement'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|tone|color|align|style|key|ref|className|style|children)$/]",
+        "message": "<Statement> doesn't accept that prop. Declared props: children, tone, color, align, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Statement'] > JSXAttribute[name.name='tone'] > Literal[value!=/^(?:hard|soft)$/]",
+        "message": "<Statement> tone must be one of 'hard' | 'soft'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Statement'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|center|right)$/]",
+        "message": "<Statement> align must be one of 'left' | 'center' | 'right'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='TileGrid'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|gap|style|key|ref|className|style|children)$/]",
+        "message": "<TileGrid> doesn't accept that prop. Declared props: children, gap, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Wordmark'] > JSXAttribute > JSXIdentifier[name!=/^(?:children|variant|size|color|align|style|key|ref|className|style|children)$/]",
+        "message": "<Wordmark> doesn't accept that prop. Declared props: children, variant, size, color, align, style."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Wordmark'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:bubble|heavy)$/]",
+        "message": "<Wordmark> variant must be one of 'bubble' | 'heavy'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Wordmark'] > JSXAttribute[name.name='align'] > Literal[value!=/^(?:left|center|right)$/]",
+        "message": "<Wordmark> align must be one of 'left' | 'center' | 'right'."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "ColorDot": {
+        "replaces": []
+      },
+      "ColorTile": {
+        "replaces": []
+      },
+      "FactRowItem": {
+        "replaces": []
+      },
+      "Icon": {
+        "replaces": []
+      },
+      "LinkTile": {
+        "replaces": []
+      },
+      "NavBarItem": {
+        "replaces": []
+      },
+      "NewsletterBar": {
+        "replaces": []
+      },
+      "ObjectTile": {
+        "replaces": []
+      },
+      "Overlay": {
+        "replaces": []
+      },
+      "PageHeader": {
+        "replaces": []
+      },
+      "PhotoLink": {
+        "replaces": []
+      },
+      "PhotoTile": {
+        "replaces": []
+      },
+      "SectionLabel": {
+        "replaces": []
+      },
+      "SiteFooter": {
+        "replaces": []
+      },
+      "Statement": {
+        "replaces": []
+      },
+      "TileGrid": {
+        "replaces": []
+      },
+      "Wordmark": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--border-hairline",
+      "--border-strong",
+      "--border-width",
+      "--font-body",
+      "--font-display",
+      "--font-heading",
+      "--font-label",
+      "--font-mono",
+      "--font-mono-alt",
+      "--font-ui",
+      "--fs-112",
+      "--fs-12",
+      "--fs-13",
+      "--fs-14",
+      "--fs-16",
+      "--fs-182",
+      "--fs-199",
+      "--fs-20",
+      "--fs-24",
+      "--fs-26",
+      "--fs-30",
+      "--fs-36",
+      "--fs-38",
+      "--fs-42",
+      "--fs-46",
+      "--fs-60",
+      "--fw-black",
+      "--fw-bold",
+      "--fw-extrabold",
+      "--fw-medium",
+      "--fw-regular",
+      "--fw-semibold",
+      "--grid-gap",
+      "--gutter-inline",
+      "--icon-hit",
+      "--lh-mono",
+      "--lh-normal",
+      "--lh-relaxed",
+      "--lh-snug",
+      "--lh-tight",
+      "--ls-snug",
+      "--ls-tight",
+      "--ls-tighter",
+      "--ls-tightest",
+      "--ls-wide",
+      "--ls-wider",
+      "--olive-black",
+      "--olive-blush",
+      "--olive-clay",
+      "--olive-cream",
+      "--olive-fog",
+      "--olive-highlighter",
+      "--olive-ink",
+      "--olive-mist",
+      "--olive-navy",
+      "--olive-oxblood",
+      "--olive-periwinkle",
+      "--olive-rule",
+      "--olive-sage",
+      "--olive-signal-red",
+      "--olive-white",
+      "--page-max",
+      "--page-pad-bottom",
+      "--page-pad-top",
+      "--page-pad-x",
+      "--page-width",
+      "--radius-none",
+      "--radius-round",
+      "--scrim-photo",
+      "--space-10",
+      "--space-100",
+      "--space-11",
+      "--space-112",
+      "--space-13",
+      "--space-14",
+      "--space-157",
+      "--space-16",
+      "--space-17",
+      "--space-2",
+      "--space-20",
+      "--space-200",
+      "--space-21",
+      "--space-22",
+      "--space-24",
+      "--space-30",
+      "--space-40",
+      "--space-43",
+      "--space-7",
+      "--space-74",
+      "--space-80",
+      "--space-88",
+      "--surface-inverse",
+      "--surface-overlay",
+      "--surface-page",
+      "--surface-tile",
+      "--text-muted",
+      "--text-on-dark",
+      "--text-primary",
+      "--tile-height",
+      "--tile-min",
+      "--tile-pad"
+    ],
+    "tokenKinds": {
+      "--olive-black": "color",
+      "--olive-white": "color",
+      "--olive-cream": "color",
+      "--olive-sage": "color",
+      "--olive-clay": "color",
+      "--olive-ink": "color",
+      "--olive-navy": "color",
+      "--olive-oxblood": "color",
+      "--olive-blush": "color",
+      "--olive-fog": "color",
+      "--olive-mist": "color",
+      "--olive-periwinkle": "color",
+      "--olive-signal-red": "color",
+      "--olive-highlighter": "color",
+      "--olive-rule": "color",
+      "--surface-page": "color",
+      "--surface-inverse": "color",
+      "--surface-tile": "color",
+      "--surface-overlay": "color",
+      "--text-primary": "font",
+      "--text-on-dark": "font",
+      "--text-muted": "font",
+      "--border-hairline": "color",
+      "--border-strong": "color",
+      "--scrim-photo": "color",
+      "--font-display": "font",
+      "--font-heading": "font",
+      "--font-body": "font",
+      "--font-label": "font",
+      "--font-mono": "font",
+      "--font-mono-alt": "font",
+      "--font-ui": "font",
+      "--fs-12": "spacing",
+      "--fs-13": "spacing",
+      "--fs-14": "spacing",
+      "--fs-16": "spacing",
+      "--fs-20": "spacing",
+      "--fs-24": "spacing",
+      "--fs-26": "spacing",
+      "--fs-30": "spacing",
+      "--fs-36": "spacing",
+      "--fs-38": "spacing",
+      "--fs-42": "spacing",
+      "--fs-46": "spacing",
+      "--fs-60": "spacing",
+      "--fs-112": "spacing",
+      "--fs-182": "spacing",
+      "--fs-199": "spacing",
+      "--fw-regular": "font",
+      "--fw-medium": "font",
+      "--fw-semibold": "font",
+      "--fw-bold": "font",
+      "--fw-extrabold": "font",
+      "--fw-black": "font",
+      "--lh-tight": "font",
+      "--lh-snug": "font",
+      "--lh-normal": "font",
+      "--lh-relaxed": "font",
+      "--lh-mono": "font",
+      "--ls-tightest": "spacing",
+      "--ls-tighter": "spacing",
+      "--ls-tight": "spacing",
+      "--ls-snug": "spacing",
+      "--ls-wide": "spacing",
+      "--ls-wider": "spacing",
+      "--space-2": "spacing",
+      "--space-7": "spacing",
+      "--space-10": "spacing",
+      "--space-11": "spacing",
+      "--space-13": "spacing",
+      "--space-14": "spacing",
+      "--space-16": "spacing",
+      "--space-17": "spacing",
+      "--space-20": "spacing",
+      "--space-21": "spacing",
+      "--space-22": "spacing",
+      "--space-24": "spacing",
+      "--space-30": "spacing",
+      "--space-40": "spacing",
+      "--space-43": "spacing",
+      "--space-74": "spacing",
+      "--space-80": "spacing",
+      "--space-88": "spacing",
+      "--space-100": "spacing",
+      "--space-112": "spacing",
+      "--space-157": "spacing",
+      "--space-200": "spacing",
+      "--page-max": "spacing",
+      "--page-width": "spacing",
+      "--page-pad-x": "spacing",
+      "--page-pad-top": "spacing",
+      "--page-pad-bottom": "spacing",
+      "--gutter-inline": "spacing",
+      "--grid-gap": "spacing",
+      "--tile-min": "spacing",
+      "--tile-height": "spacing",
+      "--tile-pad": "spacing",
+      "--icon-hit": "spacing",
+      "--radius-none": "radius",
+      "--radius-round": "radius",
+      "--border-width": "spacing"
+    },
+    "fontFamilies": [
+      "Inter",
+      "Nunito"
+    ]
+  }
+}
