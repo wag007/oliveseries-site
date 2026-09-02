@@ -1,7 +1,7 @@
 function Home({ onAbout }) {
   const { TileGrid, ColorTile, ObjectTile, LinkTile, PhotoTile, PageHeader, FactRow, Statement, NewsletterBar, SiteFooter, NavBar } = window.OliveDesignSystem_d726ce;
   return (
-    <div style={{ width: 1280, minHeight: 4457, margin: "0 auto", background: "var(--surface-page)", display: "flex", flexDirection: "column", alignItems: "center", padding: "22px 10px 20px", boxSizing: "border-box" }}>
+    <div style={{ width: "100%", maxWidth: 1280, minHeight: 4457, margin: "0 auto", background: "var(--surface-page)", display: "flex", flexDirection: "column", alignItems: "center", padding: "22px 10px 20px", boxSizing: "border-box" }}>
       <NavBar items={[{ label: "Acerca de", onClick: onAbout }, { label: "Cómo llegar", href: "#directions" }, { label: "EN", href: "/" }]} />
       <PageHeader title="Olive" tagline="Charlas en bares" handle="@oliveseries" />
       <main style={{ display: "flex", flexDirection: "column", alignItems: "center", alignSelf: "stretch" }}>
