@@ -1,8 +1,8 @@
 
 const PARAGRAPHS = [
-  "Olive lleva a profesores y expertos a los bares. Cuarenta minutos de una charla de verdad, y luego todos discuten sobre ella en la segunda ronda.",
-  "Sin entradas, sin diapositivas, sin acreditación colgando del cuello. Llega pronto si quieres sitio para sentarte.",
-  "Todas las charlas son gratis. Madrid, la mayoría de los jueves, desde las 20:00.",
+  "Una hora. Un bar. Una idea que cambia cómo ves algo.",
+  "Olive saca a profesores y expertos del aula y los mete en la sala de al lado — conocimiento real, formato ligero, cero postureo. No hace falta currículum, solo curiosidad.",
+  "Así se siente aprender cuando nadie te está evaluando.",
 ];
 
 function About({ open, onClose }) {
