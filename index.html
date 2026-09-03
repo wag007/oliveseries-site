@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olive — A lecture series in bars</title>
+<meta name="description" content="Short expert talks in Madrid's bars. Three talks, one night, zero boring PowerPoint. Join the list for the next date.">
+<link rel="alternate" hreflang="es" href="https://oliveseries.com/es/">
+<link rel="alternate" hreflang="en" href="https://oliveseries.com/">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="page">
+  <nav class="nav">
+    <a href="#" id="about-link">About</a>
+    <a href="#directions">Directions</a>
+    <a href="/es/">ES</a>
+  </nav>
+
+  <header class="page-header">
+    <div class="wordmark">Olive</div>
+    <div class="header-meta">
+      <span class="tagline">A lecture series in bars</span>
+      <a href="https://instagram.com/oliveseries">@oliveseries</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="fact-row">
+      <div class="fact"><span class="label">What:</span><span class="value">a lecture in a bar</span></div>
+      <div class="fact"><span class="label">When:</span><span class="value">Sept 14th 20:00</span></div>
+      <div class="fact"><span class="label">Where:</span><span class="value">Calle de la Reina 16, Madrid</span></div>
+    </div>
+
+    <div class="tile-grid" id="directions">
+      <div class="tile tile-photo" style="background-image:url(/assets/photo-crowd.jpg)" role="img" aria-label="A full bar listening to a talk"></div>
+
+      <div class="tile tile-object" style="background-color:var(--olive-ink);color:var(--olive-white)">
+        <div class="art" style="background-image:url(/assets/cutout-01.png)"></div>
+        <div class="tile-meta"><span>Poster</span><span class="dim">September 26'</span></div>
+      </div>
+
+      <a class="tile" style="background-color:var(--olive-black);color:var(--olive-white)" href="https://maps.google.com">
+        <span class="tile-label" style="align-self:flex-start;font-size:16px;text-align:left">Google Maps Link</span>
+        <span class="tile-arrow">↗</span>
+      </a>
+
+      <div class="tile tile-object cover" style="background-color:var(--olive-navy);color:var(--olive-white)">
+        <div class="art" style="background-image:url(/assets/cutout-02.png)"></div>
+        <div class="tile-meta"><span>Program</span><span class="dim">October 26'</span></div>
+      </div>
+
+      <div class="tile color" style="background-color:var(--olive-fog)"><span class="tile-label">Talks</span></div>
+
+      <div class="tile tile-photo" style="background-image:url(/assets/photo-tile-06.png)" role="img" aria-label="Bar interior"></div>
+
+      <div class="tile color" style="background-color:var(--olive-cream)"><span class="tile-label">Science</span></div>
+
+      <div class="tile tile-object" style="background-color:var(--olive-oxblood);color:var(--olive-white)">
+        <div class="art" style="background-image:url(/assets/cutout-03.png)"></div>
+        <div class="tile-meta"><span>Cassette</span><span class="dim">November 26'</span></div>
+      </div>
+
+      <div class="tile color" style="background-color:var(--olive-sage)"><span class="tile-label">Philosophy</span></div>
+
+      <a class="tile tile-photo" style="background-image:url(/assets/photo-tile-10.jpg);color:var(--olive-white)" href="https://substack.com">
+        <span class="tile-label" style="align-self:flex-start;font-size:16px;text-align:left">Follow Us on Substack</span>
+        <span class="tile-arrow">↗</span>
+      </a>
+
+      <div class="tile color" style="background-color:var(--olive-clay)"><span class="tile-label">History</span></div>
+
+      <a class="tile" style="background-color:var(--olive-black);color:var(--olive-white)" href="https://instagram.com">
+        <span class="tile-label" style="align-self:flex-start;font-size:16px;text-align:left">Browse the Instagram</span>
+        <span class="tile-arrow">↗</span>
+      </a>
+
+      <div class="tile color" style="background-color:var(--olive-cream)"><span class="tile-label">Art</span></div>
+
+      <div class="tile tile-object cover" style="background-color:var(--olive-blush);color:var(--olive-black)">
+        <div class="art" style="background-image:url(/assets/photo-cosmos.jpg)"></div>
+        <div class="tile-meta"><span>Tickets</span><span class="dim">December 26'</span></div>
+      </div>
+    </div>
+
+    <p class="statement">Olive is an hour of real teaching, held where people already are: a bar, a beer, a professor with something to say.</p>
+  </main>
+
+  <div class="bottom-block">
+    <a class="newsletter" href="#subscribe">Sign Up for our Newsletter ↗</a>
+    <div class="cta-photo" style="background-image:url(/assets/photo-cta.jpg)" role="img" aria-label="Audience at an Olive talk"></div>
+    <div class="site-footer">
+      <span class="kicker">A lecture series in bars</span>
+      <div class="foot-wordmark">Olive</div>
+      <div class="foot-legal">
+        <span>Olive© 2026 All Rights Reserved</span>
+        <a href="https://instagram.com/oliveseries">@oliveseries</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="overlay" id="about-overlay">
+  <button class="overlay-close" id="about-close" aria-label="Close">×</button>
+  <div class="overlay-body">
+    <p>One hour. One bar. One idea that changes how you see something.</p>
+    <p>Olive brings professors and experts out of the lecture hall and into the room next to you — real knowledge, lightweight format, zero gatekeeping. You don't need credentials, just curiosity.</p>
+    <p>This is what learning feels like when nobody's grading you.</p>
+  </div>
+</div>
+
+<script>
+  var overlay = document.getElementById('about-overlay');
+  document.getElementById('about-link').addEventListener('click', function(e){
+    e.preventDefault();
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('about-close').addEventListener('click', function(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+</script>
+</body>
+</html>
