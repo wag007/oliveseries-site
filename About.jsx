@@ -1,8 +1,8 @@
 
 const PARAGRAPHS = [
-  "Olive puts professors and experts in bars. Forty minutes of a real lecture, then everyone argues about it over the second round.",
-  "No tickets, no slides, no badge on a lanyard. Turn up early if you want a stool.",
-  "Every talk is free. Madrid, most Thursdays, from 20:00.",
+  "One hour. One bar. One idea that changes how you see something.",
+  "Olive brings professors and experts out of the lecture hall and into the room next to you — real knowledge, lightweight format, zero gatekeeping. You don't need credentials, just curiosity.",
+  "This is what learning feels like when nobody's grading you.",
 ];
 
 function About({ open, onClose }) {

@@ -3,3 +3,21 @@
 @import url("tokens/typography.css");
 @import url("tokens/spacing.css");
 @import url("tokens/base.css");
+
+/* Mobile fixes — added post-launch, not part of the original design system export */
+
+/* 1) Reliable full-viewport coverage for the About overlay across phone browsers,
+   whose address bar resizing otherwise makes position:absolute;inset:0 unreliable
+   without an explicit positioned ancestor. */
+html, body { height: 100%; }
+#root { position: relative; min-height: 100vh; }
+
+/* 2) Tiles set minWidth:360 as an inline style, which CSS can't normally override.
+   !important is required here specifically to beat that inline style — this is the
+   one place in the stylesheet that should use it. */
+@media (max-width: 420px) {
+  .tile {
+    min-width: 0 !important;
+    flex-basis: 100% !important;
+  }
+}
