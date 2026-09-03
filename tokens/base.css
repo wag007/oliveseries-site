@@ -1,4 +1,0 @@
-body{margin:0;background:var(--surface-page);color:var(--text-primary);font-family:var(--font-mono);-webkit-font-smoothing:antialiased}
-a{color:var(--text-primary);text-decoration:underline;text-underline-offset:2px;transition:opacity .15s linear}
-a:hover{opacity:.6}
-a:active{opacity:.4}
